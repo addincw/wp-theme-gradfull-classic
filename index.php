@@ -97,90 +97,29 @@
     <div class="container">
         <h2 class="underline">Latest Articles</h2>
         <div class="row mb-50">
-            <div class="col-lg-4 py-3">
-                <div class="card article-card">
-                    <img alt="article thumbnail" class="card-img-top" src="<?php echo get_theme_file_uri('assets/img/no-image.png'); ?>" />
-                    <div class="card-body">
-                        <h3 class="card-title">
-                            <a href="/article-detail.html" class="link link-primary">Article Title</a>
-                        </h3>
-                        <p class="card-text">
-                            Some quick example text to build on the card title and make up
-                            the bulk of the card's content.
-                        </p>
+            <?php
+            $latestPosts = new WP_Query(['posts_per_page' => 5]);
+
+            while ($latestPosts->have_posts()) :
+                $latestPosts->the_post();
+
+                $thumbnailCapt = get_the_post_thumbnail_caption();
+                if (!$thumbnailCapt) {
+                    $thumbnailCapt = get_the_title();
+                }
+            ?>
+                <div class="col-lg-4 py-3">
+                    <div class="card article-card">
+                        <img alt="<?php echo $thumbnailCapt; ?>" class="card-img-top" src="<?php echo the_post_thumbnail_url(); ?>" onerror="this.src = '<?php echo get_theme_file_uri('assets/img/no-image.png'); ?>';" />
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                <a href="/article-detail.html" class="link link-primary" title="<?php echo the_title(); ?>"><?php echo the_title(); ?></a>
+                            </h3>
+                            <p class="card-text"><?php echo get_the_excerpt(); ?></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 py-3">
-                <div class="card article-card">
-                    <img alt="article thumbnail" class="card-img-top" src="<?php echo get_theme_file_uri('assets/img/no-image.png'); ?>" />
-                    <div class="card-body">
-                        <h3 class="card-title">
-                            <a href="/article-detail.html" class="link link-primary">Article Title</a>
-                        </h3>
-                        <p class="card-text">
-                            Some quick example text to build on the card title and make up
-                            the bulk of the card's content.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 py-3">
-                <div class="card article-card">
-                    <img alt="article thumbnail" class="card-img-top" src="<?php echo get_theme_file_uri('assets/img/no-image.png'); ?>" />
-                    <div class="card-body">
-                        <h3 class="card-title">
-                            <a href="/article-detail.html" class="link link-primary">Article Title</a>
-                        </h3>
-                        <p class="card-text">
-                            Some quick example text to build on the card title and make up
-                            the bulk of the card's content.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 py-3">
-                <div class="card article-card">
-                    <img alt="article thumbnail" class="card-img-top" src="<?php echo get_theme_file_uri('assets/img/no-image.png'); ?>" />
-                    <div class="card-body">
-                        <h3 class="card-title">
-                            <a href="/article-detail.html" class="link link-primary">Article Title</a>
-                        </h3>
-                        <p class="card-text">
-                            Some quick example text to build on the card title and make up
-                            the bulk of the card's content.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 py-3">
-                <div class="card article-card">
-                    <img alt="article thumbnail" class="card-img-top" src="<?php echo get_theme_file_uri('assets/img/no-image.png'); ?>" />
-                    <div class="card-body">
-                        <h3 class="card-title">
-                            <a href="/article-detail.html" class="link link-primary">Article Title</a>
-                        </h3>
-                        <p class="card-text">
-                            Some quick example text to build on the card title and make up
-                            the bulk of the card's content.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 py-3">
-                <div class="card article-card">
-                    <img alt="article thumbnail" class="card-img-top" src="<?php echo get_theme_file_uri('assets/img/no-image.png'); ?>" />
-                    <div class="card-body">
-                        <h3 class="card-title">
-                            <a href="/article-detail.html" class="link link-primary">Article Title</a>
-                        </h3>
-                        <p class="card-text">
-                            Some quick example text to build on the card title and make up
-                            the bulk of the card's content.
-                        </p>
-                    </div>
-                </div>
-            </div>
+            <?php endwhile; ?>
         </div>
         <div class="text-center">
             <a href="/articles.html" class="link-primary link-offset-3 text-capitalize">see another articles <i class="bi bi-arrow-right-short ms-1"></i></a>
