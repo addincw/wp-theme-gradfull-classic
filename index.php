@@ -52,42 +52,37 @@
             </div>
             <div class="col-lg-6">
                 <div class="row">
-                    <div class="col-6">
-                        <div class="card project-card mb-4">
-                            <img alt="project thumbnail" class="card-img-bg" src="<?php echo get_theme_file_uri('assets/img/no-image.png'); ?>" />
-                            <div class="card-body bg-success">
-                                <h3 class="card-title">
-                                    <a href="/project-detail.html" class="link">Project Title</a>
-                                </h3>
-                            </div>
+                    <?php
+                    $qHighlightProjects = new WP_Query(['post_type' => 'project', 'posts_per_page' => 4]);
+                    $highlightProjects = $qHighlightProjects->get_posts();
+                    $highlightProjectGroups = array_chunk($highlightProjects, 2);
+
+                    foreach ($highlightProjectGroups as $groupKey => $highlightProjectGroup) :
+                        /** @var WP_POST $project */
+                    ?>
+                        <div class="col-6 <?php echo $groupKey === 1 ? "pt-5" : "" ?>">
+                            <?php
+                            foreach ($highlightProjectGroup as $project) :
+                                $thumbnailCapt = get_the_post_thumbnail_caption($project);
+                                if (!$thumbnailCapt) {
+                                    $thumbnailCapt = $project->post_title;
+                                }
+                            ?>
+                                <div class="card project-card mb-4">
+                                    <img alt="<?php echo $thumbnailCapt; ?>" class="card-img-bg" src="<?php echo get_the_post_thumbnail_url($project); ?>" onerror="this.src = '<?php echo get_theme_file_uri('assets/img/no-image.png'); ?>';" />
+                                    <div class="card-body bg-success">
+                                        <h3 class="card-title">
+                                            <a href="/project-detail.html" class="link"><?php echo $project->post_title; ?></a>
+                                        </h3>
+                                    </div>
+                                </div>
+                            <?php
+                            endforeach;
+                            ?>
                         </div>
-                        <div class="card project-card">
-                            <img alt="project thumbnail" class="card-img-bg" src="<?php echo get_theme_file_uri('assets/img/no-image.png'); ?>" />
-                            <div class="card-body bg-success">
-                                <h3 class="card-title">
-                                    <a href="/project-detail.html" class="link">Project Title</a>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 pt-5">
-                        <div class="card project-card mb-4">
-                            <img alt="project thumbnail" class="card-img-bg" src="<?php echo get_theme_file_uri('assets/img/no-image.png'); ?>" />
-                            <div class="card-body bg-success">
-                                <h3 class="card-title">
-                                    <a href="/project-detail.html" class="link">Project Title</a>
-                                </h3>
-                            </div>
-                        </div>
-                        <div class="card project-card">
-                            <img alt="project thumbnail" class="card-img-bg" src="<?php echo get_theme_file_uri('assets/img/no-image.png'); ?>" />
-                            <div class="card-body bg-success">
-                                <h3 class="card-title">
-                                    <a href="/project-detail.html" class="link">Project Title</a>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                    endforeach;
+                    ?>
                 </div>
             </div>
         </div>

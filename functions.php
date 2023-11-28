@@ -10,6 +10,8 @@ add_action('after_setup_theme', function () {
     //     'gf_main_menus' => 'Main Menus',
     //     'gf_footer_menus' => 'Footer Menus',
     // ]);
+
+    require get_template_directory() . '/inc/custom-post-types.php';
 });
 
 add_action('wp_enqueue_scripts', function () {
