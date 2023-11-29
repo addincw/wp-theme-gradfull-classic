@@ -1,3 +1,17 @@
+<?php
+
+/**
+ * 
+ * @param mixed[] $args
+ *        bool    $args['default_transparent']
+ */
+
+$navTransparent = "navbar-transparent";
+if (isset($args['default_transparent']) && !$args['default_transparent']) {
+    $navTransparent = "";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,14 +36,14 @@
 </head>
 
 <body <?php body_class(); ?>>
-    <nav class="navbar navbar-transparent navbar-expand-lg">
+    <nav class="navbar <?php echo $navTransparent; ?> navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand brand-title" href="/">Project Cendekia</a>
+            <a class="navbar-brand brand-title" href="<?php echo site_url('/'); ?>">Project Cendekia</a>
             <div class="d-none d-lg-block flex-grow-0">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    <a class="nav-link active" aria-current="page" href="<?php echo site_url('/'); ?>">Home</a>
                     <a class="nav-link" href="/projects.html">Projects</a>
-                    <a class="nav-link" href="/articles.html">Articles</a>
+                    <a class="nav-link" href="<?php echo site_url('/articles'); ?>">Articles</a>
                 </div>
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,9 +58,9 @@
                 </div>
                 <div class="offcanvas-body">
                     <nav class="nav flex-column">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        <a class="nav-link active" aria-current="page" href="<?php echo site_url('/'); ?>">Home</a>
                         <a class="nav-link" href="/projects.html">Projects</a>
-                        <a class="nav-link" href="/articles.html">Articles</a>
+                        <a class="nav-link" href="<?php echo site_url('/articles'); ?>">Articles</a>
                     </nav>
                 </div>
             </div>
