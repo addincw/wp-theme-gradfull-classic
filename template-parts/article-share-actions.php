@@ -26,8 +26,7 @@ $articleTitleEncoded = urlencode($articleTitle);
         <a target="_blank" href="whatsapp://send?text=<?php echo $articleTitleEncoded; ?>%C2%A0+<?php echo $articleLinkEncoded; ?>" aria-label="share to whatsapp" class="btn btn-whatsapp rounded-circle">
             <i aria-hidden="true" class="bi bi-whatsapp"></i>
         </a>
-        <!-- TODO: add js handler to copy to clipboard -->
-        <button aria-label="copy article link to clipboard" class="btn btn-light rounded-circle" data-text="<?php echo $articleLink; ?>?%3Futm_source%3Dothers%26utm_medium%3Dwebsharing">
+        <button aria-label="copy article link to clipboard" class="btn btn-copy btn-light rounded-circle" data-copy="<?php echo $articleLink; ?>?%3Futm_source%3Dothers%26utm_medium%3Dwebsharing">
             <i aria-hidden="true" class="bi bi-copy"></i>
         </button>
     </div>

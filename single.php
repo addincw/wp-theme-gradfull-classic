@@ -52,7 +52,7 @@ if (!$thumbnailCapt) {
 
             <section class="col-lg-4 ps-0 ps-lg-3">
                 <div class="related-topics mb-5">
-                    <h2 class="fs-4 underline">Categories</h2>
+                    <h2 class="fs-4 underline">Related Categories</h2>
                     <?php if (count($categories) > 0) : ?>
                         <div class="d-flex flex-wrap">
                             <?php
