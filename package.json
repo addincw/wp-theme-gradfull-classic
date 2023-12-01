@@ -1,0 +1,29 @@
+{
+  "name": "wp-theme-gradfullclassic",
+  "version": "1.0.0",
+  "description": "Classic Wordpress Theme based on Gradfull Html Template",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://addincw@github.com/addincw/wp-theme-gradfull-classic.git"
+  },
+  "keywords": [
+    "wordpress",
+    "theme",
+    "classic",
+    "bootstrap5",
+    "scss"
+  ],
+  "author": "Addin Cendekia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/addincw/wp-theme-gradfull-classic/issues"
+  },
+  "homepage": "https://github.com/addincw/wp-theme-gradfull-classic#readme",
+  "dependencies": {
+    "@addincendekia/template-gradfull": "^2.1.0"
+  }
+}
