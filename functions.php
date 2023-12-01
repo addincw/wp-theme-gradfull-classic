@@ -22,7 +22,7 @@ add_action('wp_enqueue_scripts', function () {
 });
 
 add_action('pre_get_posts', function (WP_Query $wpQuery) {
-    if (!is_paged() && $wpQuery->is_main_query()) {
+    if (!is_paged() && !is_archive() && $wpQuery->is_main_query()) {
         $wpQuery->set('posts_per_page', get_option('posts_per_page') - 1);
     }
 });
