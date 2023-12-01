@@ -1,25 +1,37 @@
 <?php
-get_header(null, ['default_transparent' => false]);
+get_header(null, [
+    'body_class' => 'article-detail',
+    'navbar_default_transparent' => false,
+]);
 
 the_post();
-
-get_template_part('/template-parts/breadcrumbs', null, [
-    'paths' => [
-        ['route' => '/', 'name' => 'Home'],
-        ['route' => '/articles', 'name' => 'Articles'],
-        get_the_title()
-    ]
-]);
 
 $currentPostId = get_the_ID();
 $categories = get_the_category();
 /** @var int[] $categoryIds */
 $categoryIds = array_column($categories, 'term_id');
+$otherPostsLabel = "Articles";
+$otherPostsQueryArgs = [
+    'category__in' => $categoryIds,
+    'post__not_in' => [$currentPostId],
+    'posts_per_page' => 5,
+];
+$parentRoute = ['route' => '/articles', 'name' => 'Articles'];
+$thumbnailCapt = get_the_post_thumbnail_caption() ?? get_the_title();
 
-$thumbnailCapt = get_the_post_thumbnail_caption();
-if (!$thumbnailCapt) {
-    $thumbnailCapt = get_the_title();
+if (get_post_type() === 'project') {
+    $otherPostsLabel = "Projects";
+    $otherPostsQueryArgs = array_merge($otherPostsQueryArgs, ['post_type' => 'project']);
+    $parentRoute = ['route' => '/projects', 'name' => 'Projects'];
 }
+
+get_template_part('/template-parts/breadcrumbs', null, [
+    'paths' => [
+        ['route' => '/', 'name' => 'Home'],
+        $parentRoute,
+        get_the_title()
+    ]
+]);
 ?>
 
 <!-- article -->
@@ -69,14 +81,9 @@ if (!$thumbnailCapt) {
                     <?php endif; ?>
                 </div>
                 <div class="other-articles">
-                    <h2 class="fs-4 underline">Other Articles</h2>
+                    <h2 class="fs-4 underline text-capitalize">Other <?php echo $otherPostsLabel; ?></h2>
                     <?php
-                    $otherPosts = new WP_Query([
-                        'category__in' => $categoryIds,
-                        'post__not_in' => [$currentPostId],
-                        'posts_per_page' => 5,
-                    ]);
-
+                    $otherPosts = new WP_Query($otherPostsQueryArgs);
                     if ($otherPosts->found_posts) :
                     ?>
                         <ol class="list-group list-group-numbered">

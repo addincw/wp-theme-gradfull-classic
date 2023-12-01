@@ -3,11 +3,14 @@
 /**
  * 
  * @param mixed[] $args
- *        bool    $args['default_transparent']
+ *        string  $args['body_class']
+ *        bool    $args['navbar_default_transparent']
  */
 
+$addBodyClass = isset($args['body_class']) ? $args['body_class'] : "";
+
 $navTransparent = "navbar-transparent";
-if (isset($args['default_transparent']) && !$args['default_transparent']) {
+if (isset($args['navbar_default_transparent']) && !$args['navbar_default_transparent']) {
     $navTransparent = "";
 }
 ?>
@@ -35,14 +38,14 @@ if (isset($args['default_transparent']) && !$args['default_transparent']) {
     <?php endif; ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class($addBodyClass); ?>>
     <nav class="navbar <?php echo $navTransparent; ?> navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand brand-title" href="<?php echo site_url('/'); ?>">Project Cendekia</a>
             <div class="d-none d-lg-block flex-grow-0">
                 <div class="navbar-nav">
                     <a class="nav-link active" aria-current="page" href="<?php echo site_url('/'); ?>">Home</a>
-                    <a class="nav-link" href="/projects.html">Projects</a>
+                    <a class="nav-link" href="<?php echo site_url('/projects'); ?>">Projects</a>
                     <a class="nav-link" href="<?php echo site_url('/articles'); ?>">Articles</a>
                 </div>
             </div>
@@ -59,7 +62,7 @@ if (isset($args['default_transparent']) && !$args['default_transparent']) {
                 <div class="offcanvas-body">
                     <nav class="nav flex-column">
                         <a class="nav-link active" aria-current="page" href="<?php echo site_url('/'); ?>">Home</a>
-                        <a class="nav-link" href="/projects.html">Projects</a>
+                        <a class="nav-link" href="<?php echo site_url('/projects'); ?>">Projects</a>
                         <a class="nav-link" href="<?php echo site_url('/articles'); ?>">Articles</a>
                     </nav>
                 </div>

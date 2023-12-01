@@ -1,5 +1,12 @@
 <?php
-$pagination = paginate_links(['type' => 'list']);
+
+/**
+ * 
+ * @param mixed[] $args arguments for wp paginate_links
+ */
+$paginationArgs = array_merge(['type' => 'list'], isset($args) ? $args : []);
+
+$pagination = paginate_links($paginationArgs) ?? "";
 
 $pagination = preg_replace('/ul class=\'([\w-]*)\'/', 'ul class="pagination justify-content-center $1"', $pagination);
 $pagination = preg_replace('/<li>/', '<li class="page-item">', $pagination);

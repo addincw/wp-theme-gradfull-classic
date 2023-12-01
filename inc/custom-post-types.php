@@ -5,9 +5,6 @@ add_action('init', function () {
         'public' => true,
         'show_in_rest' => true,
         'has_archive' => true,
-        'rewrite' => [
-            'slug' => 'projects',
-        ],
         'menu_icon' => 'dashicons-schedule',
         'labels' => [
             'name' => 'Projects',

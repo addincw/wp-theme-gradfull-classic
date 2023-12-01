@@ -48,7 +48,7 @@
             <div class="project-description col-lg-6 pb-5 pb-lg-0">
                 <h2 class="mb-30">All Creative Works, Selected Projects</h2>
                 <p>I share what I've done on the project, what stack I've used.</p>
-                <a href="/projects.html" class="link-primary link-offset-3 text-capitalize">see another projects <i class="bi bi-arrow-right-short ms-1"></i></a>
+                <a href="<?php echo site_url('/projects'); ?>" class="link-primary link-offset-3 text-capitalize">see another projects <i class="bi bi-arrow-right-short ms-1"></i></a>
             </div>
             <div class="col-lg-6">
                 <div class="row">
