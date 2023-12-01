@@ -13,6 +13,10 @@ $navTransparent = "navbar-transparent";
 if (isset($args['navbar_default_transparent']) && !$args['navbar_default_transparent']) {
     $navTransparent = "";
 }
+
+$isInHome = gf_is_route_match('/', true);
+$isInProject = gf_is_route_match('/projects', true) || get_post_type() === 'project';
+$isInArticle = gf_is_route_match('/articles', true) || get_post_type() === 'post';
 ?>
 
 <!DOCTYPE html>
@@ -44,9 +48,9 @@ if (isset($args['navbar_default_transparent']) && !$args['navbar_default_transpa
             <a class="navbar-brand brand-title" href="<?php echo site_url('/'); ?>">Project Cendekia</a>
             <div class="d-none d-lg-block flex-grow-0">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="<?php echo site_url('/'); ?>">Home</a>
-                    <a class="nav-link" href="<?php echo site_url('/projects'); ?>">Projects</a>
-                    <a class="nav-link" href="<?php echo site_url('/articles'); ?>">Articles</a>
+                    <a class="nav-link <?php echo gf_print_if('active', $isInHome); ?>" <?php echo gf_print_if('aria-current="page"', $isInHome); ?> href="<?php echo site_url('/'); ?>">Home</a>
+                    <a class="nav-link <?php echo gf_print_if('active', $isInProject); ?>" <?php echo gf_print_if('aria-current="page"', $isInProject); ?> href="<?php echo site_url('/projects'); ?>">Projects</a>
+                    <a class="nav-link <?php echo gf_print_if('active', $isInArticle); ?>" <?php echo gf_print_if('aria-current="page"', $isInArticle); ?> href="<?php echo site_url('/articles'); ?>">Articles</a>
                 </div>
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,9 +65,9 @@ if (isset($args['navbar_default_transparent']) && !$args['navbar_default_transpa
                 </div>
                 <div class="offcanvas-body">
                     <nav class="nav flex-column">
-                        <a class="nav-link active" aria-current="page" href="<?php echo site_url('/'); ?>">Home</a>
-                        <a class="nav-link" href="<?php echo site_url('/projects'); ?>">Projects</a>
-                        <a class="nav-link" href="<?php echo site_url('/articles'); ?>">Articles</a>
+                        <a class="nav-link <?php echo gf_print_if('active', $isInHome); ?>" <?php echo gf_print_if('aria-current="page"', $isInHome); ?> href="<?php echo site_url('/'); ?>">Home</a>
+                        <a class="nav-link <?php echo gf_print_if('active', $isInProject); ?>" <?php echo gf_print_if('aria-current="page"', $isInProject); ?> href="<?php echo site_url('/projects'); ?>">Projects</a>
+                        <a class="nav-link <?php echo gf_print_if('active', $isInArticle); ?>" <?php echo gf_print_if('aria-current="page"', $isInArticle); ?> href="<?php echo site_url('/articles'); ?>">Articles</a>
                     </nav>
                 </div>
             </div>
