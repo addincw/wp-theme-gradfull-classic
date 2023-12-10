@@ -1,4 +1,4 @@
-<section class="bg-gradient-seagreen py-80">
+<section id="contact" class="bg-gradient-seagreen py-80">
     <div class="container">
         <h2 class="underline">Contact Me</h2>
         <p class="mb-50">

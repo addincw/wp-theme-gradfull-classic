@@ -10,7 +10,7 @@
             Im a <span class="d-block fw-semibold fs-1">Frontend Developer</span>
         </p>
         <p>Have something to discuss? lets see if i can help that</p>
-        <button class="btn btn-lg btn-gradient-pearlgreen rounded-pill">
+        <button class="btn btn-lg btn-gradient-pearlgreen btn-jts rounded-pill" data-target="#contact">
             <i class="bi bi-envelope me-1"></i> Send me a message
         </button>
     </div>
