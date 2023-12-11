@@ -27,6 +27,10 @@
         $currentPagePosts = $projectPosts->post_count;
 
         $offsetPost = $currentPage * $postsPerPage - ($postsPerPage - 1);
+        if ($currentPagePosts === 0) {
+            $offsetPost = 0;
+        }
+
         $limitPost = ($currentPage - 1) * $postsPerPage + $currentPagePosts;
 
         $totalPosts = wp_count_posts('project')->publish;

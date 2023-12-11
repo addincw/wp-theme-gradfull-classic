@@ -85,6 +85,12 @@
 
                     wp_reset_postdata();
                     ?>
+
+                    <?php if (count($highlightProjects) === 0) : ?>
+                        <div class="col-12 pt-5">
+                            <p class="text-center">No record found</p>
+                        </div>
+                    <?php endif ?>
                 </div>
             </div>
         </div>
