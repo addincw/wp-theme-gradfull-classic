@@ -14,9 +14,9 @@ Visit [html template repositories](https://github.com/addincw/html-template-grad
 1. [Description](https://github.com/addincw/html-template-gradfull#gradfull-html-template)
 2. [Table of Contents](https://github.com/addincw/html-template-gradfull#table-of-contents)
 3. [Structure Folders](https://github.com/addincw/html-template-gradfull#structure-folder)
-4. [Prerequisite]
-5. [Get the Theme]
-6. [Installation]
+4. [Prerequisite](https://github.com/addincw/html-template-gradfull#structure-folder)
+5. [Get the Theme](https://github.com/addincw/html-template-gradfull#structure-folder)
+6. [Installation](https://github.com/addincw/html-template-gradfull#structure-folder)
 7. [Work with Theme](https://github.com/addincw/html-template-gradfull#quick-start)
 8. [License](https://github.com/addincw/html-template-gradfull#license)
 
