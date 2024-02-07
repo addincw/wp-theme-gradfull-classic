@@ -15,3 +15,5 @@ class JumpToSection {
     });
   }
 }
+
+export default JumpToSection;
