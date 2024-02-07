@@ -72,7 +72,9 @@
                                     <img alt="<?php echo $thumbnailCapt; ?>" class="card-img-bg" src="<?php echo get_the_post_thumbnail_url($project); ?>" onerror="this.src = '<?php echo get_theme_file_uri('assets/img/no-image.png'); ?>';" />
                                     <div class="card-body bg-success">
                                         <h3 class="card-title">
-                                            <a href="/project-detail.html" class="link"><?php echo $project->post_title; ?></a>
+                                            <a href="<?php echo get_the_permalink($project); ?>" class="link">
+                                                <?php echo $project->post_title; ?>
+                                            </a>
                                         </h3>
                                     </div>
                                 </div>
